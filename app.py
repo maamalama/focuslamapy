@@ -62,7 +62,7 @@ def classify_batch():
         # Classify the event using LlamaIndex
         
         prompt_tmpl = PromptTemplate(
-            "Imagine you're an expert at analyzing human behavior. Based on web site traffic data, rate the degree of distraction from work from 0 to 10. Make sure that your answer is correct depending on the sites visited and their number, for example, if a person visited for a minute 3 times reddit, 3 times youtube and 1 time site related to non-entertainment, he clearly began to be distracted. Data from recent visits: {content}."
+            "Imagine you're an expert at analyzing human behavior. Based on web site traffic data, rate the degree of distraction from work from 0 to 10. Make sure that your answer is correct depending on the sites visited and their number, for example, if a person visited for a minute 3 times reddit, 3 times youtube and 1 time site related to non-entertainment (different categories), he clearly began to be distracted, if it's primary only 1-2 same frequent websites non distraction category like Other, Work, Tech and etc then it's not a distraction. Data from recent visits: {content}."
         )
         print(prompt_tmpl)
         distraction_level = llm.structured_predict(
